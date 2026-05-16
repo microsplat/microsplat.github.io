@@ -3,7 +3,6 @@
   if (!outer) return;
 
   const slides = Array.from(outer.querySelectorAll('.carousel-slide'));
-  const dotsContainer = document.getElementById('carouselDots');
   const total = slides.length;
   let current = 0;
   let timer;
@@ -16,23 +15,12 @@
       else if (rel === total - 1) slide.classList.add('is-prev');
       else if (rel === 1) slide.classList.add('is-next');
     });
-    dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-      dot.classList.toggle('is-active', i === current);
-    });
   }
 
   function advance(dir) {
     current = ((current + dir) % total + total) % total;
     update();
   }
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'carousel-dot';
-    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-    dot.addEventListener('click', () => { current = i; update(); });
-    dotsContainer.appendChild(dot);
-  });
 
   document.getElementById('carouselPrev').addEventListener('click', () => advance(-1));
   document.getElementById('carouselNext').addEventListener('click', () => advance(1));
