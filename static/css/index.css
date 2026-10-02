@@ -455,3 +455,5 @@ figcaption strong { color: #e8e8e8; }
   display: inline-block;
 }
 .results-legend strong { color: #fff; }
+
+.content strong { color: #ffffff; }
