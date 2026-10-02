@@ -435,25 +435,5 @@ figcaption strong { color: #e8e8e8; }
 
 .results-sub { color: #fff; margin-bottom: 1rem; }
 .results-sub-real { margin-top: 4rem; }
-.results-legend {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem 1.4rem;
-  margin: 0.75rem 0 0.25rem;
-  padding: 0;
-  color: #ccc;
-  font-size: 0.9rem;
-}
-.results-legend li { display: inline-flex; align-items: center; gap: 0.45rem; margin: 0; }
-.results-legend i {
-  width: 0.95rem;
-  height: 0.95rem;
-  border-radius: 3px;
-  border: 3px solid var(--c);
-  display: inline-block;
-}
-.results-legend strong { color: #fff; }
 
 .content strong { color: #ffffff; }
