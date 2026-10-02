@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="MicroSplat — anonymous RA-L submission project page.">
+  <meta name="description" content="MicroSplat — anonymous ICRA 2027 submission project page.">
   <meta name="robots" content="noindex">
 
   <title>MicroSplat</title>
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 
-  <link rel="stylesheet" href="./static/css/index.css?v=6">
+  <link rel="stylesheet" href="./static/css/index.css?v=13">
 
   <script defer src="./static/js/index.js"></script>
 </head>
@@ -28,10 +28,10 @@
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">MicroSplat</h1>
           <h2 class="subtitle is-3 publication-title">
-            A Concise Subtitle Describing the Method
+            Towards Automating 3D Small-Scale Reconstruction
           </h2>
           <span class="is-size-5 publication-venue">
-            IEEE Robotics and Automation Letters (RA-L)
+            IEEE International Conference on Robotics and Automation (ICRA 2027)
           </span>
           <br>
           <span class="is-size-6 venue-status">
@@ -41,31 +41,33 @@
           <!-- POST-ACCEPTANCE: add author block above buttons, replace href="#" with real URLs -->
           <div class="publication-links" style="margin-top: 1.5rem;">
             <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded is-dark">
+              <a href="./static/misc/MicroSplat.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon"><i class="fas fa-file-pdf"></i></span>
                 <span>Paper</span>
               </a>
             </span>
+            <!-- arXiv button: uncomment once the link is available
             <span class="link-block">
               <a href="#" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon"><i class="ai ai-arxiv"></i></span>
                 <span>arXiv</span>
               </a>
             </span>
+            -->
             <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded is-dark">
+              <a href="https://youtu.be/FwB3asTDSFs" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon"><i class="fab fa-youtube"></i></span>
                 <span>Video</span>
               </a>
             </span>
             <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded is-dark">
+              <a href="https://anonymous.4open.science/r/Microscopic-3D-Reconstruction-FA3D" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon"><i class="fab fa-github"></i></span>
                 <span>Code</span>
               </a>
             </span>
             <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded is-dark">
+              <a href="https://huggingface.co/datasets/splatmicro/microsplat" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon"><i class="far fa-images"></i></span>
                 <span>Data</span>
               </a>
@@ -100,12 +102,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <figure class="image teaser-figure">
-        <img src="./static/images/teaser.png" alt="Teaser figure placeholder">
-        <figcaption class="has-text-centered is-italic">
-          <strong>Teaser caption.</strong> One sentence describing the headline result.
-        </figcaption>
-      </figure>
+      <p class="has-text-centered is-italic">
+        <strong>TL;DR:</strong> A robot arm and a consumer microscope autonomously reconstruct small objects as 3D Gaussian Splats.
+      </p>
     </div>
   </div>
 </section>
@@ -118,15 +117,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Replace this
-            paragraph with the abstract from the submitted manuscript. Keep it
-            self-contained: state the problem, the key insight, the method in one
-            sentence, and the headline quantitative result.
-          </p>
-          <p>
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            A second short paragraph can highlight downstream applications, the
-            evaluation setting, and any open-source artifacts.
+            Reconstructing sub-millimeter detail of small objects underpins tasks such as circuit-board defect detection, specimen digitization, and archiving. 3D Gaussian Splatting (3DGS) makes photorealistic reconstruction possible from posed images alone, but macro optics violate two conditions it depends on. The field of view (FOV) and the depth of field (DoF) shrink to millimeters, so viewpoint error can take a sample out of frame, and only a thin focal plane is sharp in frame. Existing automated macro-capture rigs handle the shallow DoF with per-view focus stacking, but typically rely on classical photogrammetry and offline, human-in-the-loop processing. We present <strong>MicroSplat</strong>, which generates a 3DGS using a low-cost consumer microscope on a manipulator arm. After a single up-front object-localization step, the system runs unattended. It performs calibration, plans collision-free viewpoints, captures and fuses a focal stack at each viewpoint, segments the object across all views, and optimizes a 3DGS model warm-started with the arm's own poses. We further compare against blur-aware 3DGS methods, which infer sharp scenes from defocused images, and find that measuring sharpness with a controlled focal sweep outperforms inferring it. We provide real and synthetic datasets (including robot and camera parameters) and the fitted 3DGS reconstructions.
           </p>
         </div>
       </div>
@@ -134,57 +125,97 @@
   </div>
 </section>
 
-<!-- =================== METHOD =================== -->
-<section class="section">
+<!-- =================== VIDEO =================== -->
+<section class="section" id="Video">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Method</h2>
-    <figure class="image method-figure">
-      <img src="./static/images/method.png" alt="Method pipeline placeholder">
-      <figcaption class="has-text-centered is-italic">
-        <strong>Pipeline overview.</strong> Replace with the method/architecture figure.
-      </figcaption>
-    </figure>
-    <div class="content has-text-justified">
-      <p>
-        Describe the method here in 1–3 paragraphs. Begin with the input/output
-        signature, then walk through each stage of the pipeline shown above,
-        and close with the loss / training objective.
-      </p>
+    <h2 class="title is-3 has-text-centered">Video</h2>
+    <div class="video-embed">
+      <iframe src="https://www.youtube-nocookie.com/embed/FwB3asTDSFs" title="MicroSplat video"
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
     </div>
   </div>
 </section>
 
 <!-- =================== RESULTS =================== -->
-<section class="section">
+<section class="section" id="Results">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Results</h2>
-    <div class="columns is-centered">
-      <div class="column">
-        <figure class="image">
-          <img src="./static/images/results_1.png" alt="Results placeholder 1">
-          <figcaption class="has-text-centered is-italic">
-            <strong>Quantitative comparison.</strong> Replace with primary results figure / table.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="column">
-        <figure class="image">
-          <img src="./static/images/results_2.png" alt="Results placeholder 2">
-          <figcaption class="has-text-centered is-italic">
-            <strong>Qualitative comparison.</strong> Replace with rendered comparisons.
-          </figcaption>
-        </figure>
-      </div>
+    <h3 class="title is-4 results-sub">Synthetic Results</h3>
+    <div class="content has-text-justified results-text">
+      <p>
+        We quantitatively evaluate focus stacking in simulation because no reliable ground truth exists for the real captures: every real image is degraded by the shallow DoF the pipeline is designed to correct, so there is no in-focus reference to score against. We therefore generate a synthetic Blender dataset of eight samples, modeled after the same objects as the real-world set, and compare against vanilla 3DGS and three blur-aware 3DGS methods (BAGS, CoCoGaussian, and Deblurring 3DGS) using ground-truth in-focus renderings.
+      </p>
     </div>
-  </div>
-</section>
 
-<!-- =================== REAL-TIME INTERACTIVE VIEWER =================== -->
-<section class="section viewer-section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Real-Time Interactive Viewer</h2>
+    <div class="results-card">
+      <div class="results-tabs" role="tablist" aria-label="Metric">
+        <button type="button" class="results-tab is-active" role="tab" data-tab="psnr">PSNR <span>&uarr;</span></button>
+        <button type="button" class="results-tab" role="tab" data-tab="ssim">SSIM <span>&uarr;</span></button>
+        <button type="button" class="results-tab" role="tab" data-tab="lpips">LPIPS <span>&darr;</span></button>
+      </div>
+<div class="results-panel is-active" data-panel="psnr">
+<div class="table-scroll"><table class="results-table">
+<thead><tr><th scope="col">Method</th><th scope="col">Almond</th><th scope="col">Blueberry</th><th scope="col">Bolt</th><th scope="col">Circuit</th><th scope="col">Flower</th><th scope="col">Pinecone</th><th scope="col">Rock</th><th scope="col">Seashell</th><th scope="col" class="col-mean">Mean</th></tr></thead>
+<tbody>
+<tr><th scope="row">Vanilla 3DGS</th><td>27.58</td><td>25.24</td><td>22.70</td><td>18.18</td><td>23.68</td><td>23.47</td><td>30.63</td><td>28.03</td><td class="col-mean">24.94</td></tr>
+<tr><th scope="row">CoCoGaussian</th><td>27.31</td><td>24.57</td><td>18.72</td><td>17.97</td><td>20.02</td><td>18.60</td><td>29.51</td><td>27.01</td><td class="col-mean">22.96</td></tr>
+<tr><th scope="row">Deblurring 3DGS</th><td>26.32</td><td>23.30</td><td>18.83</td><td>17.53</td><td>22.78</td><td>19.25</td><td>29.93</td><td>24.64</td><td class="col-mean">22.82</td></tr>
+<tr><th scope="row">BAGS</th><td class="second">29.48</td><td class="second">27.21</td><td class="second">22.78</td><td class="second">19.77</td><td class="second">26.59</td><td class="second">26.29</td><td class="second">32.70</td><td class="second">30.64</td><td class="second col-mean">26.93</td></tr>
+<tr class="is-ours"><th scope="row">Ours</th><td class="best">33.49</td><td class="best">37.45</td><td class="best">36.06</td><td class="best">39.53</td><td class="best">32.17</td><td class="best">41.68</td><td class="best">45.39</td><td class="best">45.13</td><td class="best col-mean">38.86</td></tr>
+</tbody></table></div>
+</div>
+<div class="results-panel" data-panel="ssim">
+<div class="table-scroll"><table class="results-table">
+<thead><tr><th scope="col">Method</th><th scope="col">Almond</th><th scope="col">Blueberry</th><th scope="col">Bolt</th><th scope="col">Circuit</th><th scope="col">Flower</th><th scope="col">Pinecone</th><th scope="col">Rock</th><th scope="col">Seashell</th><th scope="col" class="col-mean">Mean</th></tr></thead>
+<tbody>
+<tr><th scope="row">Vanilla 3DGS</th><td>0.65</td><td>0.75</td><td class="second">0.59</td><td>0.48</td><td>0.74</td><td>0.59</td><td>0.77</td><td>0.86</td><td class="col-mean">0.68</td></tr>
+<tr><th scope="row">CoCoGaussian</th><td>0.64</td><td>0.71</td><td>0.39</td><td>0.48</td><td>0.62</td><td>0.51</td><td>0.75</td><td>0.83</td><td class="col-mean">0.62</td></tr>
+<tr><th scope="row">Deblurring 3DGS</th><td>0.62</td><td>0.66</td><td>0.41</td><td>0.46</td><td>0.74</td><td>0.51</td><td>0.77</td><td>0.79</td><td class="col-mean">0.62</td></tr>
+<tr><th scope="row">BAGS</th><td class="second">0.70</td><td class="second">0.79</td><td class="second">0.59</td><td class="second">0.56</td><td class="second">0.79</td><td class="second">0.68</td><td class="second">0.80</td><td class="second">0.89</td><td class="second col-mean">0.72</td></tr>
+<tr class="is-ours"><th scope="row">Ours</th><td class="best">0.96</td><td class="best">0.98</td><td class="best">0.97</td><td class="best">0.99</td><td class="best">0.95</td><td class="best">0.99</td><td class="best">0.99</td><td class="best">1.00</td><td class="best col-mean">0.98</td></tr>
+</tbody></table></div>
+</div>
+<div class="results-panel" data-panel="lpips">
+<div class="table-scroll"><table class="results-table">
+<thead><tr><th scope="col">Method</th><th scope="col">Almond</th><th scope="col">Blueberry</th><th scope="col">Bolt</th><th scope="col">Circuit</th><th scope="col">Flower</th><th scope="col">Pinecone</th><th scope="col">Rock</th><th scope="col">Seashell</th><th scope="col" class="col-mean">Mean</th></tr></thead>
+<tbody>
+<tr><th scope="row">Vanilla 3DGS</th><td>0.20</td><td>0.29</td><td>0.17</td><td>0.16</td><td>0.18</td><td>0.25</td><td>0.22</td><td>0.16</td><td class="col-mean">0.20</td></tr>
+<tr><th scope="row">CoCoGaussian</th><td>0.19</td><td>0.30</td><td>0.20</td><td>0.15</td><td>0.19</td><td>0.30</td><td>0.22</td><td>0.15</td><td class="col-mean">0.21</td></tr>
+<tr><th scope="row">Deblurring 3DGS</th><td>0.21</td><td>0.29</td><td>0.21</td><td>0.17</td><td>0.18</td><td>0.29</td><td>0.22</td><td>0.17</td><td class="col-mean">0.22</td></tr>
+<tr><th scope="row">BAGS</th><td class="second">0.17</td><td class="second">0.26</td><td class="second">0.16</td><td class="second">0.14</td><td class="second">0.16</td><td class="second">0.20</td><td class="second">0.19</td><td class="second">0.14</td><td class="second col-mean">0.18</td></tr>
+<tr class="is-ours"><th scope="row">Ours</th><td class="best">0.06</td><td class="best">0.02</td><td class="best">0.04</td><td class="best">0.01</td><td class="best">0.06</td><td class="best">0.01</td><td class="best">0.01</td><td class="best">0.01</td><td class="best col-mean">0.03</td></tr>
+</tbody></table></div>
+</div>
+      <p class="results-note">Quantitative comparison across all samples in the synthetic dataset. Best result per column is highlighted, second best underlined. Mean is the average over the eight objects.</p>
+    </div>
+
+    <figure class="results-figure">
+      <div class="results-figure-frame">
+        <img src="./static/images/synthetic_results.png" alt="Qualitative comparison on a synthetic pinecone: ground truth, ours, BAGS, CoCoGaussian, Deblurring 3DGS, and vanilla 3DGS">
+      </div>
+      <ul class="results-legend">
+        <li><i style="--c:#e81313"></i>Ground truth</li>
+        <li><i style="--c:#ba23f6"></i><strong>Ours</strong></li>
+        <li><i style="--c:#fcc713"></i>BAGS</li>
+        <li><i style="--c:#1a73e8"></i>CoCoGaussian</li>
+        <li><i style="--c:#0f8a1f"></i>Deblurring 3DGS</li>
+        <li><i style="--c:#ff9933"></i>Vanilla 3DGS</li>
+      </ul>
+      <figcaption class="has-text-centered is-italic">
+        <strong>Qualitative comparison</strong> on a pinecone from our synthetic dataset.
+      </figcaption>
+    </figure>
+
+    <!-- =================== REAL-WORLD RESULTS (interactive viewer tiles) =================== -->
+    <h3 class="title is-4 results-sub results-sub-real">Real-World Results</h3>
+    <div class="content has-text-justified results-text">
+      <p>
+        The synthetic dataset controls lighting, exposure, and white balance; the real captures have none of these guarantees, so these results demonstrate the pipeline's ability to extrapolate to our low-cost microscope. Many of the reconstructions are difficult to distinguish from photographs. Intricate detail survives: the peeling skin on the almond, the flap on the blueberry, and even the text on the circuit board, whose characters are roughly 0.4 mm wide.
+      </p>
+    </div>
     <p class="has-text-centered viewer-intro">
-      Click any scene below to open it in the live WebGL viewer.
+      Click any scene below to open it in a live, interactive viewer.
     </p>
 
     <div class="columns is-multiline viewer-grid">
@@ -238,19 +269,6 @@
         </a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- =================== BIBTEX =================== -->
-<section class="section bibtex-section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title is-3">BibTeX</h2>
-    <pre><code>@article{anonymous2026microsplat,
-  title   = {MicroSplat: Anonymous Submission},
-  author  = {Anonymous},
-  journal = {Under review at IEEE Robotics and Automation Letters},
-  year    = {2026}
-}</code></pre>
   </div>
 </section>
 

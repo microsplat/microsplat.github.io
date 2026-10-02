@@ -66,3 +66,15 @@
 
   update();
 }());
+
+// Results table metric tabs
+(function () {
+  var tabs = document.querySelectorAll('.results-tab');
+  var panels = document.querySelectorAll('.results-panel');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+      panels.forEach(function (p) { p.classList.toggle('is-active', p.dataset.panel === tab.dataset.tab); });
+    });
+  });
+})();

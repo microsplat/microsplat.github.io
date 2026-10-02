@@ -1,6 +1,6 @@
 # MicroSplat — Project Page
 
-Anonymous RA-L submission project page. Built from the [Nerfies](https://nerfies.github.io/) template.
+Anonymous ICRA 2027 submission project page. Built from the [Nerfies](https://nerfies.github.io/) template.
 
 ---
 
@@ -23,9 +23,8 @@ Drop files into `static/images/`. The expected filenames are:
 |---|---|
 | `teaser.png` | Hero teaser figure below the title |
 | `method.png` | Method section pipeline figure |
-| `results_1.png` | Left results figure |
-| `results_2.png` | Right results figure |
-| `tile_1.png` … `tile_8.png` | Real-Time Interactive Viewer grid |
+| `synthetic_results.png` | Qualitative synthetic results figure |
+| `tile_1.png` … `tile_8.png` | Real-World Results viewer grid |
 
 Any format a browser can display (PNG, JPG, WebP, GIF) works. Tiles look best at a square aspect ratio (e.g. 512×512) because the CSS forces 1:1 display.
 
@@ -50,7 +49,6 @@ All placeholder text is in `index.html` — search for `Lorem ipsum`, `Replace t
 To rename the project from **MicroSplat**:
 - `<title>` in `<head>`
 - `<h1 class="title …">MicroSplat</h1>` in the hero
-- The BibTeX entry near the bottom
 
 ---
 
